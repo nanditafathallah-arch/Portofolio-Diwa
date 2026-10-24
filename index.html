@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandita Fairuz Athallah | Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Plus Jakarta Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#FFF5F7',
+                            100: '#FFE6EC',
+                            200: '#FCD0DC',
+                            300: '#F8A9BD',
+                            400: '#E89BA7',
+                            500: '#D87383',
+                            600: '#C25062',
+                            700: '#9E3948',
+                            800: '#7E2F3B',
+                            900: '#5F242C',
+                        },
+                        cream: {
+                            50: '#FFFEFA',
+                            100: '#FDFBF7',
+                            200: '#FAF4E8',
+                            300: '#F5EAC0',
+                        },
+                        darkText: '#2D2424',
+                        mutedText: '#7A6B6B'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FDFBF7;
+            color: #2D2424;
+        }
+        .soft-card {
+            background: #ffffff;
+            border: 1px solid #FCD0DC;
+            box-shadow: 0 10px 30px rgba(232, 155, 167, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .soft-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(232, 155, 167, 0.18);
+            border-color: #E89BA7;
+        }
+        .pink-gradient {
+            background: linear-gradient(135deg, #FFE6EC 0%, #FCD0DC 100%);
+        }
+        .pink-badge {
+            background-color: #FFE6EC;
+            color: #C25062;
+        }
+    </style>
+</head>
+<body class="bg-cream-100 text-darkText antialiased selection:bg-brand-200 selection:text-brand-900">
+
+    <!-- FLOATING NAVBAR -->
+    <header class="fixed top-4 inset-x-0 z-50 px-4">
+        <nav class="max-w-4xl mx-auto bg-white/90 backdrop-blur-md border border-brand-200 shadow-md rounded-full px-5 py-3 flex items-center justify-between">
+            <a href="#home" class="font-extrabold text-xl tracking-tight text-brand-600 flex items-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center text-sm font-bold">D</span>
+                <span>Diwa<span class="text-brand-400">.</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <ul class="hidden md:flex items-center gap-6 text-sm font-semibold text-mutedText">
+                <li><a href="#home" class="hover:text-brand-600 transition-colors">Home</a></li>
+                <li><a href="#about" class="hover:text-brand-600 transition-colors">About Me</a></li>
+                <li><a href="#skills" class="hover:text-brand-600 transition-colors">Skills</a></li>
+                <li><a href="#work" class="hover:text-brand-600 transition-colors">Work</a></li>
+                <li><a href="#achievement" class="hover:text-brand-600 transition-colors">Achievement</a></li>
+                <li><a href="#contact" class="hover:text-brand-600 transition-colors">Contact</a></li>
+            </ul>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-2">
+                <button onclick="openModal()" class="hidden sm:inline-flex items-center gap-1.5 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold text-xs px-3.5 py-2 rounded-full border border-brand-200 transition-all">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>Edit Biodata</span>
+                </button>
+                <a href="#contact" class="bg-brand-500 hover:bg-brand-600 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-full shadow-md shadow-brand-500/20 transition-all">
+                    Let's Connect
+                </a>
+                <!-- Mobile Hamburger -->
+                <button id="menuBtn" class="md:hidden text-brand-600 text-xl p-1 focus:outline-none ml-1">
+                    <i class="fa-solid fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden max-w-4xl mx-auto mt-2 bg-white border border-brand-200 rounded-2xl p-4 shadow-xl text-center space-y-3 font-semibold md:hidden">
+            <a href="#home" class="mobile-link block py-2 hover:bg-brand-50 rounded-lg text-darkText">Home</a>
+            <a href="#about" class="mobile-link block py-2 hover:bg-brand-50 rounded-lg text-darkText">About Me</a>
+            <a href="#skills" class="mobile-link block py-2 hover:bg-brand-50 rounded-lg text-darkText">Skills & Tools</a>
+            <a href="#work" class="mobile-link block py-2 hover:bg-brand-50 rounded-lg text-darkText">Work Gallery</a>
+            <a href="#achievement" class="mobile-link block py-2 hover:bg-brand-50 rounded-lg text-darkText">Achievement</a>
+            <a href="#contact" class="mobile-link block py-2 hover:bg-brand-50 rounded-lg text-darkText">Contact</a>
+            <button onclick="openModal(); toggleMobileMenu();" class="w-full bg-brand-50 text-brand-700 text-sm font-bold py-2.5 rounded-xl border border-brand-200">
+                <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Biodata
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+                
+                <!-- Text Content -->
+                <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full pink-badge text-xs font-extrabold tracking-wide uppercase">
+                        <span class="inline-block w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        <span id="displayBadge">S1 Sistem Informasi · Unesa</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-darkText leading-tight">
+                        Hi, I'm <span class="text-brand-600 underline decoration-brand-200 underline-offset-8" id="displayName">Nandita Fairuz</span> <br>
+                        <span class="text-2xl sm:text-4xl lg:text-5xl font-bold text-mutedText" id="displaySubtitle">Athallah</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-mutedText leading-relaxed max-w-xl mx-auto md:mx-0 font-medium" id="displayBio">
+                        Mahasiswa Program Studi S1 Sistem Informasi yang senang dalam mempelajari hal baru
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
+                        <a href="#work" class="bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-2xl shadow-lg shadow-brand-500/25 transition-all hover:scale-105">
+                            Lihat Karya Saya <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                        <a href="#contact" class="bg-white hover:bg-brand-50 text-darkText font-bold text-sm px-6 py-3.5 rounded-2xl border border-brand-200 transition-all hover:border-brand-300">
+                            Hubungi Saya
+                        </a>
+                    </div>
+
+                    <!-- Quick Stats Badges -->
+                    <div class="pt-6 grid grid-cols-3 gap-3 border-t border-brand-200 max-w-md mx-auto md:mx-0">
+                        <div class="bg-white p-3 rounded-2xl border border-brand-100 text-center">
+                            <span class="block font-extrabold text-brand-600 text-lg">4+</span>
+                            <span class="text-xs font-semibold text-mutedText">Projects</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-2xl border border-brand-100 text-center">
+                            <span class="block font-extrabold text-brand-600 text-lg">3+</span>
+                            <span class="text-xs font-semibold text-mutedText">Achievements</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-2xl border border-brand-100 text-center">
+                            <span class="block font-extrabold text-brand-600 text-lg">2026</span>
+                            <span class="text-xs font-semibold text-mutedText">Certified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROFILE FRAME AVATAR (PERBAIKAN BESAR BINGKAI & WADAH FOTO) -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative w-64 h-80 sm:w-72 sm:h-96">
+                        <!-- Background Accent Shapes -->
+                        <div class="absolute -top-4 -left-4 w-full h-full pink-gradient rounded-3xl transform -rotate-3 border-2 border-brand-300"></div>
+                        <div class="absolute -bottom-4 -right-4 w-full h-full bg-cream-300 rounded-3xl transform rotate-3 opacity-60"></div>
+                        
+                        <!-- Frame Utama -->
+                        <div class="relative w-full h-full bg-white rounded-3xl p-3 border border-brand-200 shadow-xl overflow-hidden">
+                            
+                            <!-- Foto Profil (Memenuhi Wadah) -->
+                            <img id="profileImage" src="foto-diwa.jpeg" alt="Foto Profil" class="w-full h-full object-cover object-center rounded-2xl shadow-inner">
+                            
+                            <!-- Placeholder Jika Foto Belum Ada -->
+                            <div id="profilePlaceholder" class="w-full h-full bg-brand-50/80 border-2 border-dashed border-brand-200 rounded-2xl flex flex-col items-center justify-center p-6 text-brand-600 text-center">
+                                <div class="w-16 h-16 rounded-full bg-brand-100 flex items-center justify-center text-2xl mb-3 text-brand-600 shadow-sm">
+                                    <i class="fa-solid fa-camera"></i>
+                                </div>
+                                <span class="font-bold text-sm text-darkText" id="displayCallsign">Nandita (Diwa)</span>
+                                <p class="text-xs text-mutedText mt-1">Klik tombol di bawah untuk unggah foto profil</p>
+                            </div>
+
+                            <!-- Floating Upload Button di Pojok Kanan Bawah -->
+                            <label class="absolute bottom-5 right-5 w-11 h-11 bg-brand-500 hover:bg-brand-600 text-white rounded-full flex items-center justify-center cursor-pointer shadow-lg border-2 border-white transition-all hover:scale-110 z-10" title="Ganti Foto Profil">
+                                <i class="fa-solid fa-camera text-sm"></i>
+                                <input type="file" id="photoUploadInput" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="py-20 bg-brand-50/50 border-y border-brand-200/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="pink-badge font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full">Get To Know Me</span>
+                <h2 class="text-3xl font-extrabold text-darkText mt-3">About Me</h2>
+                <p class="text-mutedText text-sm mt-2">Detail latar belakang pendidikan dan informasi singkat mengenai diri saya.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                
+                <!-- Profile Card Left -->
+                <div class="md:col-span-5 soft-card p-6 sm:p-8 rounded-3xl relative overflow-hidden">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-100 flex items-center justify-center text-brand-600 text-2xl mb-6">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-darkText mb-1" id="aboutFullName">Nandita Fairuz Athallah</h3>
+                    <p class="text-xs font-semibold text-brand-600 mb-6" id="aboutPanggilan">Panggilan: Diwa</p>
+
+                    <div class="space-y-3.5 text-sm">
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-cream-100 border border-brand-100">
+                            <span class="text-mutedText font-medium">NIM</span>
+                            <span class="font-bold text-darkText" id="aboutNIM">26051214062</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-cream-100 border border-brand-100">
+                            <span class="text-mutedText font-medium">Program Studi</span>
+                            <span class="font-bold text-darkText" id="aboutProdi">S1 Sistem Informasi</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-cream-100 border border-brand-100">
+                            <span class="text-mutedText font-medium">Rumpun</span>
+                            <span class="font-bold text-darkText" id="aboutRumpun">Teknik Informatika</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-cream-100 border border-brand-100">
+                            <span class="text-mutedText font-medium">Perguruan Tinggi</span>
+                            <span class="font-bold text-darkText">Universitas Negeri Surabaya</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bio Card Right -->
+                <div class="md:col-span-7 soft-card p-6 sm:p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-brand-600 font-bold text-sm mb-4">
+                            <i class="fa-solid fa-sparkles"></i>
+                            <span>Biografi & Minat</span>
+                        </div>
+                        <p class="text-mutedText leading-relaxed text-sm sm:text-base" id="aboutBioFull">
+                            Saya adalah mahasiswa Program Studi Sistem Informasi yang memiliki minat dalam pengembangan perangkat lunak dan teknologi. Saya tertarik untuk mengeksplorasi ide kreatif dan mengembangkan solusi digital melalui pembelajaran serta pengalaman proyek. Saya terus berupaya mengembangkan kemampuan diri untuk tumbuh dan berkontribusi di bidang teknologi.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-brand-100 grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center text-brand-600">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-mutedText font-semibold">Fokus Utama</span>
+                                <span class="text-xs font-bold text-darkText">IoT & Logic Dev</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center text-brand-600">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-mutedText font-semibold">Minat</span>
+                                <span class="text-xs font-bold text-darkText">Software & Games</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS & TOOLS SECTION -->
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="pink-badge font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full">Capabilities</span>
+                <h2 class="text-3xl font-extrabold text-darkText mt-3">What Can I Do?</h2>
+                <p class="text-mutedText text-sm mt-2">Bahasa pemrograman, kemampuan teknis, dan alat pendukung yang saya kuasai.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Skills Card -->
+                <div class="soft-card p-6 sm:p-8 rounded-3xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-100 flex items-center justify-center text-brand-600 text-xl font-bold">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-darkText">Skills & Competencies</h3>
+                            <p class="text-xs text-mutedText">Bahasa pemrograman & fungsional</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-2xl bg-cream-50 border border-brand-100">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-sm text-darkText flex items-center gap-2">
+                                    <i class="fa-brands fa-python text-brand-600"></i> Python
+                                </span>
+                                <span class="text-xs font-extrabold text-brand-600">Beginner</span>
+                            </div>
+                            <p class="text-xs text-mutedText">Fondasi dasar logika pemrograman, struktur data dasar, dan sintaksis Python.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-cream-50 border border-brand-100">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-sm text-darkText flex items-center gap-2">
+                                    <i class="fa-solid fa-code text-brand-600"></i> C++
+                                </span>
+                                <span class="text-xs font-extrabold text-brand-600">Beginner</span>
+                            </div>
+                            <p class="text-xs text-mutedText">Pemahaman konsep algoritma dasar, percabangan, dan perulangan.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-cream-50 border border-brand-100">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-sm text-darkText flex items-center gap-2">
+                                    <i class="fa-solid fa-puzzle-piece text-brand-600"></i> Scratch Programming
+                                </span>
+                                <span class="text-xs font-extrabold text-brand-600">Basic</span>
+                            </div>
+                            <p class="text-xs text-mutedText">Pemrograman berbasis blok visual untuk membuat game interaktif sederhana dan kuis.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-cream-50 border border-brand-100">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-sm text-darkText flex items-center gap-2">
+                                    <i class="fa-solid fa-microchip text-brand-600"></i> Arduino Project
+                                </span>
+                                <span class="text-xs font-extrabold text-brand-600">Basic</span>
+                            </div>
+                            <p class="text-xs text-mutedText">Praktik dasar elektronika dan mikrokontroler menggunakan sensor standar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Card -->
+                <div class="soft-card p-6 sm:p-8 rounded-3xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-100 flex items-center justify-center text-brand-600 text-xl font-bold">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-darkText">Tools & Environment</h3>
+                            <p class="text-xs text-mutedText">Aplikasi dan software yang sering digunakan</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-cream-50 border border-brand-100 text-center">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 mx-auto flex items-center justify-center text-brand-600 text-lg mb-2">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <h4 class="font-bold text-xs text-darkText">VS Code</h4>
+                            <span class="text-[10px] text-mutedText">Code Editor</span>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-cream-50 border border-brand-100 text-center">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 mx-auto flex items-center justify-center text-brand-600 text-lg mb-2">
+                                <i class="fa-solid fa-cubes"></i>
+                            </div>
+                            <h4 class="font-bold text-xs text-darkText">Scratch</h4>
+                            <span class="text-[10px] text-mutedText">Block Engine</span>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-cream-50 border border-brand-100 text-center">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 mx-auto flex items-center justify-center text-brand-600 text-lg mb-2">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <h4 class="font-bold text-xs text-darkText">Arduino IDE</h4>
+                            <span class="text-[10px] text-mutedText">Hardware Programming</span>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-cream-50 border border-brand-100 text-center">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 mx-auto flex items-center justify-center text-brand-600 text-lg mb-2">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <h4 class="font-bold text-xs text-darkText">Canva</h4>
+                            <span class="text-[10px] text-mutedText">Graphic Design</span>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-cream-50 border border-brand-100 text-center col-span-2">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 mx-auto flex items-center justify-center text-brand-600 text-lg mb-2">
+                                <i class="fa-solid fa-video"></i>
+                            </div>
+                            <h4 class="font-bold text-xs text-darkText">CapCut</h4>
+                            <span class="text-[10px] text-mutedText">Video Editing</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK / PROJECTS GALLERY SECTION -->
+    <section id="work" class="py-20 bg-brand-50/50 border-y border-brand-200/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="pink-badge font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full">Portfolio</span>
+                <h2 class="text-3xl font-extrabold text-darkText mt-3">Work Gallery</h2>
+                <p class="text-mutedText text-sm mt-2">Kumpulan proyek praktikum, IoT, dan pengembangan game interaktif.</p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Project Card 1 -->
+                <div class="soft-card p-6 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="pink-badge text-[11px] font-extrabold px-3 py-1 rounded-full">Arduino Project</span>
+                            <span class="text-xs font-semibold text-mutedText"><i class="fa-regular fa-calendar mr-1"></i>Februari 2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-darkText mb-2">Arduino Automatic Handwashing Tap</h3>
+                        <p class="text-xs text-mutedText leading-relaxed">
+                            Keran air otomatis berbasis mikrokontroler Arduino yang memanfaatkan sensor jarak/inframerah untuk mendeteksi keberadaan tangan secara higienis dan efisien.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-brand-100 flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-brand-600 text-xs font-bold">
+                            <i class="fa-solid fa-hardware"></i> Arduino IDE · Infrared Sensor
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="soft-card p-6 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="pink-badge text-[11px] font-extrabold px-3 py-1 rounded-full">Game Development</span>
+                            <span class="text-xs font-semibold text-mutedText"><i class="fa-regular fa-calendar mr-1"></i>Juni 2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-darkText mb-2">Flap Pink Bird on Scratch</h3>
+                        <p class="text-xs text-mutedText leading-relaxed">
+                            Game berbasis visual blok Scratch dengan karakter burung merah muda, dilengkapi rintangan dinamis serta kuis interaktif sebagai fitur tambahan pembelajaran.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-brand-100 flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-brand-600 text-xs font-bold">
+                            <i class="fa-solid fa-gamepad"></i> Scratch Block · Interactive Quiz
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="soft-card p-6 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="pink-badge text-[11px] font-extrabold px-3 py-1 rounded-full">Arduino Project</span>
+                            <span class="text-xs font-semibold text-mutedText"><i class="fa-regular fa-calendar mr-1"></i>Oktober 2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-darkText mb-2">Arduino Traffic Light</h3>
+                        <p class="text-xs text-mutedText leading-relaxed">
+                            Simulasi sistem lampu lalu lintas tiga warna (merah, kuning, hijau) yang diatur menggunakan timing presisi pada mikrokontroler Arduino.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-brand-100 flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-brand-600 text-xs font-bold">
+                            <i class="fa-solid fa-traffic-light"></i> LED Circuit · Delay Logic
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="soft-card p-6 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="pink-badge text-[11px] font-extrabold px-3 py-1 rounded-full">Arduino Project</span>
+                            <span class="text-xs font-semibold text-mutedText"><i class="fa-regular fa-calendar mr-1"></i>Oktober 2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-darkText mb-2">Music Playback Project</h3>
+                        <p class="text-xs text-mutedText leading-relaxed">
+                            Proyek pembuatan nada lagu dan melodi musik menggunakan buzzer elektronik melalui platform simulasi mikrokontroler Wokwi.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-brand-100 flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-brand-600 text-xs font-bold">
+                            <i class="fa-solid fa-music"></i> Wokwi Simulator · Buzzer Frequencies
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS & CERTIFICATIONS SECTION -->
+    <section id="achievement" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="pink-badge font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full">Milestones</span>
+                <h2 class="text-3xl font-extrabold text-darkText mt-3">Achievement & Certification</h2>
+                <p class="text-mutedText text-sm mt-2">Penghargaan kompetisi dan sertifikasi resmi yang telah dicapai.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Achievement 1 -->
+                <div class="soft-card p-6 rounded-3xl relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-brand-600 uppercase tracking-wider block mb-1">2024 · Tingkat Nasional</span>
+                    <h3 class="font-bold text-base text-darkText mb-2">Peserta Lomba Tarikh Islam (MTI)</h3>
+                    <p class="text-xs text-mutedText leading-relaxed mb-4">
+                        Berpartisipasi aktif dalam kompetisi Tarikh Islam tingkat Nasional yang diselenggarakan oleh UIN Sunan Ampel Surabaya.
+                    </p>
+                    <div class="text-[11px] font-semibold text-brand-700 bg-brand-50 p-2.5 rounded-xl border border-brand-100">
+                        <i class="fa-solid fa-university mr-1"></i> UIN Sunan Ampel Surabaya
+                    </div>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="soft-card p-6 rounded-3xl relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-brand-600 uppercase tracking-wider block mb-1">2025 · Kabupaten Bangkalan</span>
+                    <h3 class="font-bold text-base text-darkText mb-2">Peserta OSN-K Bidang Informatika</h3>
+                    <p class="text-xs text-mutedText leading-relaxed mb-4">
+                        Berpartisipasi dalam Olimpiade Sains Nasional tingkat Kabupaten (OSN-K) di bidang Informatika.
+                    </p>
+                    <div class="text-[11px] font-semibold text-brand-700 bg-brand-50 p-2.5 rounded-xl border border-brand-100">
+                        <i class="fa-solid fa-laptop-code mr-1"></i> Olimpiade Sains Nasional
+                    </div>
+                </div>
+
+                <!-- Certification 1 -->
+                <div class="soft-card p-6 rounded-3xl relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <span class="text-[10px] font-extrabold text-blue-600 uppercase tracking-wider block mb-1">2026 - 2029 · Google Certified</span>
+                    <h3 class="font-bold text-base text-darkText mb-2">Siswa Tersertifikasi Gemini</h3>
+                    <p class="text-xs text-mutedText leading-relaxed mb-4">
+                        Sertifikasi resmi pengetahuan dan keterampilan dasar penggunaan Google AI (Gemini) dalam lingkungan pendidikan.
+                    </p>
+                    <div class="text-[11px] font-semibold text-blue-700 bg-blue-50 p-2.5 rounded-xl border border-blue-100">
+                        <i class="fa-brands fa-google mr-1"></i> Google AI Certification
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-brand-50/50 border-t border-brand-200/60">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            
+            <div class="soft-card p-8 sm:p-12 rounded-3xl text-center relative overflow-hidden">
+                <div class="w-16 h-16 rounded-3xl pink-gradient text-brand-600 mx-auto flex items-center justify-center text-2xl mb-4 shadow-inner">
+                    <i class="fa-regular fa-paper-plane"></i>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-darkText">Mari Terhubung!</h2>
+                <p class="text-mutedText text-sm max-w-md mx-auto mt-2 mb-8">
+                    Tertarik berkolaborasi atau ingin berdiskusi mengenai proyek teknologi? Jangan ragu untuk menghubungi saya!
+                </p>
+
+                <!-- Action Direct Email Links -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                    <a href="mailto:nanditafathallah@gmail.com" class="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-2xl shadow-lg shadow-brand-500/20 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>nanditafathallah@gmail.com</span>
+                    </a>
+                </div>
+
+                <!-- Social Links Grid -->
+                <div class="pt-6 border-t border-brand-100 flex items-center justify-center gap-4">
+                    <a href="https://www.linkedin.com/in/nandita-f-athallah-575135441?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="w-11 h-11 rounded-2xl bg-cream-100 border border-brand-200 flex items-center justify-center text-brand-700 hover:bg-brand-500 hover:text-white transition-all">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/athallahnfz?psln=MXU4bXNrcGhpdjFlYQ==" target="_blank" class="w-11 h-11 rounded-2xl bg-cream-100 border border-brand-200 flex items-center justify-center text-brand-700 hover:bg-brand-500 hover:text-white transition-all">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="mailto:nanditafathallah@gmail.com" class="w-11 h-11 rounded-2xl bg-cream-100 border border-brand-200 flex items-center justify-center text-brand-700 hover:bg-brand-500 hover:text-white transition-all">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-white border-t border-brand-100 text-center text-xs text-mutedText">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>© <span id="year">2026</span> Nandita Fairuz Athallah (Diwa) · S1 Sistem Informasi UNESA</p>
+            <p class="mt-1 text-brand-400 font-semibold">Crafted with <i class="fa-solid fa-heart text-brand-500"></i> Soft Pink Theme</p>
+        </div>
+    </footer>
+
+    <!-- EDIT BIODATA MODAL -->
+    <div id="editModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white border border-brand-200 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between pb-4 border-b border-brand-100 mb-6">
+                <h3 class="font-extrabold text-lg text-darkText flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square text-brand-600"></i> Edit Biodata Diri
+                </h3>
+                <button onclick="closeModal()" class="text-mutedText hover:text-darkText text-xl font-bold">&times;</button>
+            </div>
+
+            <form id="biodataForm" onsubmit="saveBiodata(event)" class="space-y-4 text-xs font-semibold">
+                <div>
+                    <label class="block text-mutedText mb-1">Nama Lengkap</label>
+                    <input type="text" id="inputFullName" value="Nandita Fairuz Athallah" class="w-full p-3 rounded-xl border border-brand-200 focus:outline-none focus:border-brand-500">
+                </div>
+                <div>
+                    <label class="block text-mutedText mb-1">Nama Panggilan</label>
+                    <input type="text" id="inputPanggilan" value="Diwa" class="w-full p-3 rounded-xl border border-brand-200 focus:outline-none focus:border-brand-500">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-mutedText mb-1">NIM</label>
+                        <input type="text" id="inputNIM" value="26051214062" class="w-full p-3 rounded-xl border border-brand-200 focus:outline-none focus:border-brand-500">
+                    </div>
+                    <div>
+                        <label class="block text-mutedText mb-1">Program Studi</label>
+                        <input type="text" id="inputProdi" value="S1 Sistem Informasi" class="w-full p-3 rounded-xl border border-brand-200 focus:outline-none focus:border-brand-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-mutedText mb-1">Deskripsi Bio Singkat (Tampilan Atas)</label>
+                    <textarea id="inputBio" rows="2" class="w-full p-3 rounded-xl border border-brand-200 focus:outline-none focus:border-brand-500">Mahasiswa Program Studi S1 Sistem Informasi yang senang dalam mempelajari hal baru</textarea>
+                </div>
+
+                <div class="pt-4 flex items-center justify-end gap-3">
+                    <button type="button" onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-brand-200 text-darkText font-bold hover:bg-brand-50">Batal</button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold shadow-md">Simpan Perubahan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Set dynamic current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        menuBtn.addEventListener('click', toggleMobileMenu);
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')){
+                menuIcon.className = 'fa-solid fa-bars';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark';
+            }
+        }
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars';
+            });
+        });
+
+        // Photo Upload Functionality (Sembunyikan Placeholder & Tampilkan Foto Penuh)
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('profileImage');
+                    const placeholder = document.getElementById('profilePlaceholder');
+                    
+                    img.src = e.target.result;
+                    img.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Modal Functionality
+        function openModal() {
+            document.getElementById('editModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('editModal').classList.add('hidden');
+        }
+
+        // Save Modal Form Data
+        function saveBiodata(event) {
+            event.preventDefault();
+            
+            const fullName = document.getElementById('inputFullName').value;
+            const panggilan = document.getElementById('inputPanggilan').value;
+            const nim = document.getElementById('inputNIM').value;
+            const prodi = document.getElementById('inputProdi').value;
+            const bio = document.getElementById('inputBio').value;
+
+            // Update DOM Elements
+            document.getElementById('displayName').textContent = fullName.split(' ').slice(0, 2).join(' ');
+            document.getElementById('displaySubtitle').textContent = fullName.split(' ').slice(2).join(' ') || panggilan;
+            document.getElementById('displayCallsign').textContent = `${fullName} (${panggilan})`;
+            document.getElementById('displayBadge').textContent = `${prodi} · Unesa`;
+            document.getElementById('displayBio').textContent = bio;
+
+            document.getElementById('aboutFullName').textContent = fullName;
+            document.getElementById('aboutPanggilan').textContent = `Panggilan: ${panggilan}`;
+            document.getElementById('aboutNIM').textContent = nim;
+            document.getElementById('aboutProdi').textContent = prodi;
+
+            closeModal();
+        }
+    </script>
+</body>
+</html>
